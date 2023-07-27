@@ -1,1 +1,11 @@
-<p>message works!</p>
+<div class="container flex flex-col" [ngClass]="onCheckAuthor()">
+  <div class="mx-4 my-1 max-w-fit">
+    <p
+      class="bg-blue-300 rounded px-4 py-2 cursor-default"
+      (click)="onShowAuthor()"
+    >
+      {{ message.message }}
+    </p>
+    <p *ngIf="showAuthor" class="text-sm">{{ message.author }}</p>
+  </div>
+</div>

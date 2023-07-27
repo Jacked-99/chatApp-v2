@@ -5,13 +5,16 @@ import { Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class UserService {
-  userSubject = new Subject();
+  // userSubject = new Subject();
+  user = '';
 
   setUser(user: string) {
-    this.userSubject.next(user);
+    // this.userSubject.next(user);
+    this.user = user;
   }
   logOut() {
-    this.userSubject.next('');
+    // this.userSubject.next('');
+    this.user = '';
   }
 
   constructor() {}

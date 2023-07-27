@@ -1,1 +1,6 @@
-<p>message-list works!</p>
+<div class="mx-4 rounded-md py-4 bg-blue-200">
+  <app-message
+    *ngFor="let message of msgList"
+    [message]="message"
+  ></app-message>
+</div>

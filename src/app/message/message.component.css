@@ -1,0 +1,6 @@
+.current {
+  align-items: flex-end;
+}
+.notCurrent {
+  align-items: flex-start;
+}
