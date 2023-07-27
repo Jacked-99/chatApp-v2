@@ -1,6 +1,7 @@
 <div class="flex justify-center">
-  <form action="">
+  <form action="" [formGroup]="msgForm" (ngSubmit)="onSubmit()">
     <input
+      formControlName="msg"
       type="text"
       name=""
       id=""

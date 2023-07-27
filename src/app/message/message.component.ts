@@ -20,7 +20,6 @@ export class MessageComponent implements OnInit {
     this.showAuthor = !this.showAuthor;
   }
   onCheckAuthor() {
-    console.log(this.message.author);
     if (this.message.author != this.currentUser) {
       return 'notCurrent';
     }
