@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import { Auth, user } from '@angular/fire/auth';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -9,11 +11,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  auth = inject(Auth);
+  user = user(this.auth);
+  userSub: Subscription;
   loginVal = '';
   loginForm: FormGroup;
   ngOnInit(): void {
     this.loginForm = new FormGroup({
       login: new FormControl('', Validators.required),
+    });
+    this.userSub = this.user.subscribe((userVal) => {
+      console.log(userVal);
     });
   }
   constructor(private loginService: UserService, private router: Router) {}
@@ -27,5 +35,8 @@ export class LoginComponent implements OnInit {
       return 'border-red-500';
     }
     return '';
+  }
+  onGoogleClick() {
+    this.loginService.GoogleSignIn();
   }
 }

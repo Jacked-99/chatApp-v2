@@ -10,6 +10,11 @@ import { ChatControlComponent } from './chat-control/chat-control.component';
 import { ErrorComponent } from './error/error.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { HttpClientModule } from '@angular/common/http';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -21,7 +26,16 @@ import { HomeComponent } from './home/home.component';
     ErrorComponent,
     HomeComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

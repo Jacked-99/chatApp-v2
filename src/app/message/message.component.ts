@@ -14,7 +14,7 @@ export class MessageComponent implements OnInit {
   currentUser = '';
   constructor(private user: UserService) {}
   ngOnInit(): void {
-    this.currentUser = this.user.user;
+    this.currentUser = this.user.user.userName;
   }
   onShowAuthor() {
     this.showAuthor = !this.showAuthor;

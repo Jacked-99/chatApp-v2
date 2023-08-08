@@ -22,7 +22,7 @@ export class ChatControlComponent implements OnInit {
   }
   onSubmit() {
     const data: Message = {
-      author: this.authorService.user,
+      author: this.authorService.user.userName,
       message: this.msgForm.value['msg'],
       date: new Date(Date.now()),
     };
