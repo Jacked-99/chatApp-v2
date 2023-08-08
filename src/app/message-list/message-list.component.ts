@@ -12,12 +12,7 @@ export class MessageListComponent implements OnInit, OnDestroy {
   msgList: Message[];
   constructor(private messages: MessagesService) {}
   ngOnInit(): void {
-    this.messages.msgDisplayer.subscribe((data) => {
-      this.msgList = data;
-    });
     this.msgList = this.messages.getMessages();
   }
-  ngOnDestroy(): void {
-    this.messages.msgDisplayer.unsubscribe();
-  }
+  ngOnDestroy(): void {}
 }

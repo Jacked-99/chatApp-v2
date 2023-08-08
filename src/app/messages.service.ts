@@ -6,7 +6,7 @@ import { Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class MessagesService {
-  msgDisplayer = new Subject<Message[]>();
+  msgDisplayer = new Subject<Message[] | []>();
   messagesList: Message[] = [
     { author: 'Jack', message: 'Hello', date: new Date(Date.now()) },
     { author: 'Not Jack', message: 'Hi', date: new Date(Date.now()) },

@@ -15,7 +15,7 @@ export class UserService {
   auth: Auth = inject(Auth);
   aUser = user(this.auth);
   user: UserInterface | null = null;
-  userSub = new BehaviorSubject<UserModel | null>(null);
+  userSub = new BehaviorSubject<any>(null);
   constructor(private router: Router, private client: HttpClient) {}
 
   setUser(user: User | null) {
@@ -35,11 +35,13 @@ export class UserService {
     const provider = new GoogleAuthProvider();
     const credential = await signInWithPopup(this.auth, provider);
     if (credential.user.emailVerified) {
-      console.log(credential);
       this.router.navigate(['/']);
+      this.userSub.next(credential);
     }
   }
   async logOut() {
+    this.userSub.next(null);
     await this.auth.signOut();
+    this.router.navigate(['/login']);
   }
 }
