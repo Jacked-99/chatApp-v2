@@ -12,16 +12,16 @@ export class MessageComponent implements OnInit {
   showAuthor = false;
   @Input() message: Message;
 
-  currentUser: string;
+  currentUser: User;
   constructor(private user: UserService) {}
   ngOnInit(): void {
-    this.currentUser = this.user.auth.currentUser.displayName;
+    this.currentUser = this.user.auth.currentUser;
   }
   onShowAuthor() {
     this.showAuthor = !this.showAuthor;
   }
   onCheckAuthor() {
-    if (this.message.author != this.currentUser) {
+    if (this.message.author.name != this.currentUser['displayName']) {
       return 'notCurrent';
     }
     return 'current';

@@ -23,9 +23,12 @@ export class ChatControlComponent implements OnInit {
     });
   }
   onSubmit() {
-    const user = this.authorService.auth.currentUser.displayName;
+    const user = this.authorService.auth.currentUser;
+    if (!this.msgForm.value['msg']) {
+      return;
+    }
     const data: Message = {
-      author: user,
+      author: { name: user['displayName'], photo: user['photoURL'] },
       message: this.msgForm.value['msg'],
       date: new Date(Date.now()),
     };
