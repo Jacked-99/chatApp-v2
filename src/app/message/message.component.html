@@ -1,11 +1,19 @@
 <div class="container flex flex-col" [ngClass]="onCheckAuthor()">
   <div class="mx-4 my-1 max-w-fit">
-    <p
-      class="bg-blue-300 rounded px-4 py-2 cursor-default"
-      (click)="onShowAuthor()"
-    >
-      {{ message.message }}
-    </p>
+    <div class="flex flex-row-reverse">
+      <img
+        class="w-8 aspect-square mx-1 rounded-full"
+        src="https://t0.gstatic.com/licensed-image?q=tbn:ANd9GcQkrjYxSfSHeCEA7hkPy8e2JphDsfFHZVKqx-3t37E4XKr-AT7DML8IwtwY0TnZsUcQ"
+        alt=""
+      />
+      <p
+        class="bg-blue-300 rounded px-4 py-2 cursor-default"
+        (click)="onShowAuthor()"
+      >
+        {{ message.message }}
+      </p>
+    </div>
+
     <p *ngIf="showAuthor" class="text-sm">{{ message.author }}</p>
   </div>
 </div>

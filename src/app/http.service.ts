@@ -1,27 +1,34 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit, inject } from '@angular/core';
 import { Message } from './shared/message';
+import {
+  Database,
+  ref,
+  onValue,
+  get,
+  push,
+  child,
+  update,
+} from '@angular/fire/database';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HttpService {
   constructor(private http: HttpClient) {}
+  database = inject(Database);
 
-  fetchMsg() {
-    this.http
-      .get(
-        'https://chatappv2-69c7c-default-rtdb.europe-west1.firebasedatabase.app/messages.json'
-      )
-      .subscribe({
-        next: (mess) => {
-          console.log(mess);
-        },
-      });
+  async fetchMsg() {
+    return get(ref(this.database, '/messages/')).then((data) => {
+      return data.val();
+    });
   }
   sendMsg(message: Message) {
-    this.http.put(
-      'https://chatappv2-69c7c-default-rtdb.europe-west1.firebasedatabase.app/messages.json',
+    update(
+      ref(
+        this.database,
+        '/messages/' + push(child(ref(this.database), '/messages')).key
+      ),
       message
     );
   }

@@ -19,15 +19,16 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.loginForm = new FormGroup({
       login: new FormControl('', Validators.required),
+      passsowrd: new FormControl('', Validators.required),
+      userName: new FormControl('', Validators.required),
+      avatar: new FormControl(''),
     });
-    this.userSub = this.user.subscribe((userVal) => {
-      console.log(userVal);
-    });
+    this.userSub = this.user.subscribe((userVal) => {});
   }
   constructor(private loginService: UserService, private router: Router) {}
   onSubmit() {
     console.log(this.loginForm.value);
-    this.loginService.setUser(this.loginForm.value['login']);
+
     this.router.navigate(['']);
   }
   checkValid(login: any) {

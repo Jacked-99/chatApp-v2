@@ -18,18 +18,13 @@ export class UserService {
   userSub = new BehaviorSubject<any>(null);
   constructor(private router: Router, private client: HttpClient) {}
 
-  setUser(user: User | null) {
-    // const data: UserModel = {
-    //   userName: user.providerData[0].displayName,
-    //   avatar: user.providerData[0].photoURL,
-    //   loggedIn: true,
-    // };
-    // this.userSub.next(data);
-  }
   // singInWithEmail(){
   //   this.client.post("https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBCi9DkP4sHAV465Gu6hfQ4t_Gvicn9Mcg")
 
   // }
+  getUser() {
+    return this.aUser;
+  }
 
   async GoogleSignIn() {
     const provider = new GoogleAuthProvider();
@@ -41,7 +36,6 @@ export class UserService {
   }
   async logOut() {
     this.userSub.next(null);
-    await this.auth.signOut();
-    this.router.navigate(['/login']);
+    await this.auth.signOut().then(() => this.router.navigate(['/login']));
   }
 }

@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MessagesService } from '../messages.service';
 import { Message } from '../shared/message';
 import { UserService } from '../user.service';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-chat-control',
@@ -10,6 +11,7 @@ import { UserService } from '../user.service';
   styleUrls: ['./chat-control.component.css'],
 })
 export class ChatControlComponent implements OnInit {
+  user: any;
   msgForm: FormGroup;
   constructor(
     private msgs: MessagesService,
@@ -21,12 +23,13 @@ export class ChatControlComponent implements OnInit {
     });
   }
   onSubmit() {
+    const user = this.authorService.auth.currentUser.displayName;
     const data: Message = {
-      author: this.authorService.user.userName,
+      author: user,
       message: this.msgForm.value['msg'],
       date: new Date(Date.now()),
     };
-    console.log(data);
+
     this.msgs.addMsg(data);
   }
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Message } from './shared/message';
 import { BehaviorSubject } from 'rxjs';
+import { HttpService } from './http.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,14 +13,13 @@ export class MessagesService {
     { author: 'Not Jack', message: 'Welcome', date: new Date(Date.now()) },
   ];
   msgDisplayer = new BehaviorSubject<Message[] | []>(this.messagesList);
-
-  getMessages() {
+  constructor(private http: HttpService) {}
+  async getMessages() {
     this.msgDisplayer.next(this.messagesList.slice());
+    return await this.http.fetchMsg();
   }
   addMsg(data: Message) {
     this.msgDisplayer.next((this.messagesList = [...this.messagesList, data]));
-    console.log(this.messagesList);
+    this.http.sendMsg(data);
   }
-
-  constructor() {}
 }

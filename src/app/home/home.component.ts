@@ -34,7 +34,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   onLogout() {
     this.userS.logOut();
-    this.route.navigate(['/']);
   }
   ngOnDestroy(): void {}
 }
