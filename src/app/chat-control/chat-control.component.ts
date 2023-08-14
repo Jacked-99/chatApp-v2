@@ -32,7 +32,11 @@ export class ChatControlComponent implements OnInit {
       message: this.msgForm.value['msg'],
       date: new Date(Date.now()),
     };
-
+    this.msgForm.reset();
     this.msgs.addMsg(data);
+  }
+  addEmoji(event) {
+    const newText = this.msgForm.value['msg'] + event.emoji.native;
+    this.msgForm.setValue({ msg: newText });
   }
 }

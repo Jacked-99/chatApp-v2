@@ -1,0 +1,18 @@
+<div class="flex max-w-fit justify-between items-center">
+  <div class="relative">
+    <emoji-mart
+      *ngIf="setPicker"
+      class="absolute centered"
+      title="Pick your emoji…"
+      set="twitter"
+      (emojiSelect)="onEmojiClick($event)"
+    ></emoji-mart>
+  </div>
+  <button
+    class="mx-2 px-4 py-2 rounded bg-blue-50 text-black text-lg hover:bg-blue-100"
+    type="button"
+    (click)="emojiShow()"
+  >
+    😊
+  </button>
+</div>

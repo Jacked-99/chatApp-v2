@@ -1,4 +1,4 @@
-<div class="flex justify-center">
+<div class="flex flex-row justify-center w-max">
   <form action="" [formGroup]="msgForm" (ngSubmit)="onSubmit()">
     <input
       formControlName="msg"
@@ -13,4 +13,5 @@
       ✉️
     </button>
   </form>
+  <app-emoji (newEmoji)="addEmoji($event)"></app-emoji>
 </div>

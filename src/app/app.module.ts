@@ -17,6 +17,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { provideDatabase, getDatabase } from '@angular/fire/database';
 
+import { EmojiComponent } from './emoji/emoji.component';
+import { PickerComponent } from '@ctrl/ngx-emoji-mart';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,9 +29,11 @@ import { provideDatabase, getDatabase } from '@angular/fire/database';
     ChatControlComponent,
     ErrorComponent,
     HomeComponent,
+    EmojiComponent,
   ],
   imports: [
     BrowserModule,
+    PickerComponent,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,

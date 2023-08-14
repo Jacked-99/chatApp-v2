@@ -1,6 +1,10 @@
 <div class="container flex flex-col" [ngClass]="onCheckAuthor()">
   <div class="mx-4 my-1 max-w-fit">
-    <div class="flex flex-row-reverse">
+    <div
+      class="flex {{
+        onCheckAuthor() == 'current' ? 'flex-row-reverse' : 'flex-row'
+      }}"
+    >
       <img
         class="w-8 aspect-square mx-1 rounded-full"
         src="{{ message.author.photo }}"
@@ -14,6 +18,6 @@
       </p>
     </div>
 
-    <p *ngIf="showAuthor" class="text-sm">{{ message.author }}</p>
+    <p *ngIf="showAuthor" class="text-sm">{{ message.author.name }}</p>
   </div>
 </div>
