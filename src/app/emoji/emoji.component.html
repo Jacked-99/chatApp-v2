@@ -1,15 +1,15 @@
-<div class="flex max-w-fit justify-between items-center">
+<div class="flex max-w-fit justify-between items-baseline">
   <div class="relative">
     <emoji-mart
       *ngIf="setPicker"
       class="absolute centered"
       title="Pick your emoji…"
-      set="twitter"
+      set="google"
       (emojiSelect)="onEmojiClick($event)"
     ></emoji-mart>
   </div>
   <button
-    class="mx-2 px-4 py-2 rounded bg-blue-50 text-black text-lg hover:bg-blue-100"
+    class="mx-2 px-4 py-2 rounded bg-cyan-500 hover:bg-cyan-400 hover:shadow-md hover:shadow-cyan-400/80 p-4 m-2"
     type="button"
     (click)="emojiShow()"
   >

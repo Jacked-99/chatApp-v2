@@ -1,4 +1,8 @@
 <div class="flex flex-row justify-center w-max">
+  <div class="filePreview flex flex-col-reverse max-w-1" *ngIf="filePreview">
+    <img [src]="fileUrl" alt="" srcset="" />
+    <button type="button" (click)="closePreview()">Close</button>
+  </div>
   <form action="" [formGroup]="msgForm" (ngSubmit)="onSubmit()">
     <input
       formControlName="msg"
@@ -7,10 +11,33 @@
       id=""
       class="text-black shadow rounded p-2"
     /><button
-      class="mx-2 px-4 py-2 rounded bg-blue-50 text-black text-lg hover:bg-blue-100"
+      class="mx-2 px-4 py-2 rounded bg-cyan-500 hover:bg-cyan-400 hover:shadow-md hover:shadow-cyan-400/80 p-4 m-2"
       type="submit"
     >
       ✉️
+    </button>
+    <label for="">
+      <input
+        type="file"
+        name=""
+        id="file"
+        #file
+        class="hidden"
+        (change)="onChange($event)"
+      />
+    </label>
+
+    <button
+      class="mx-2 px-4 py-2 rounded bg-cyan-500 hover:bg-cyan-400 hover:shadow-md hover:shadow-cyan-400/80 p-4 m-2 fileBtn"
+      type="button"
+      (click)="onFileClick()"
+    >
+      <img
+        src="../../assets/addFile.svg"
+        class="aspect-square max-w-full"
+        alt=""
+        srcset=""
+      />
     </button>
   </form>
   <app-emoji (newEmoji)="addEmoji($event)"></app-emoji>
