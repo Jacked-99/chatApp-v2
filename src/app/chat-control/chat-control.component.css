@@ -1,3 +1,7 @@
 .fileBtn {
-  max-width: 4rem;
+  height: 4rem;
+}
+.chat-form {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
 }

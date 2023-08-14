@@ -1,9 +1,14 @@
-<div class="flex flex-row justify-center w-max">
+<div class="flex flex-row justify-center items-center w-max h-full">
   <div class="filePreview flex flex-col-reverse max-w-1" *ngIf="filePreview">
     <img [src]="fileUrl" alt="" srcset="" />
     <button type="button" (click)="closePreview()">Close</button>
   </div>
-  <form action="" [formGroup]="msgForm" (ngSubmit)="onSubmit()">
+  <form
+    action=""
+    [formGroup]="msgForm"
+    (ngSubmit)="onSubmit()"
+    class="chat-form"
+  >
     <input
       formControlName="msg"
       type="text"
@@ -11,30 +16,29 @@
       id=""
       class="text-black shadow rounded p-2"
     /><button
-      class="mx-2 px-4 py-2 rounded bg-cyan-500 hover:bg-cyan-400 hover:shadow-md hover:shadow-cyan-400/80 p-4 m-2"
+      class="mx-2 px-4 py-2 rounded bg-cyan-500 hover:bg-cyan-400 hover:shadow-md hover:shadow-cyan-400/80 p-4 h-full"
       type="submit"
     >
       ✉️
     </button>
-    <label for="">
-      <input
-        type="file"
-        name=""
-        id="file"
-        #file
-        class="hidden"
-        (change)="onChange($event)"
-      />
-    </label>
+
+    <input
+      type="file"
+      name=""
+      id="file"
+      #file
+      class="hidden"
+      (change)="onChange($event)"
+    />
 
     <button
-      class="mx-2 px-4 py-2 rounded bg-cyan-500 hover:bg-cyan-400 hover:shadow-md hover:shadow-cyan-400/80 p-4 m-2 fileBtn"
+      class="mx-2 py-2 rounded bg-cyan-500 hover:bg-cyan-400 hover:shadow-md hover:shadow-cyan-400/80 fileBtn h-full"
       type="button"
       (click)="onFileClick()"
     >
       <img
         src="../../assets/addFile.svg"
-        class="aspect-square max-w-full"
+        class="aspect-square h-6 mx-auto"
         alt=""
         srcset=""
       />
