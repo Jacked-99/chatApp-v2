@@ -15,6 +15,7 @@ import {
   providedIn: 'root',
 })
 export class HttpService {
+  currentUsers = [];
   constructor(private http: HttpClient) {}
   database = inject(Database);
 
@@ -32,5 +33,15 @@ export class HttpService {
       message
     );
   }
-  autoFetch() {}
+  async getUsers() {
+    return await get(ref(this.database, '/users/')).then((data) => {
+      console.log(data.val());
+      this.currentUsers = data.val();
+    });
+  }
+  setUser(userData) {
+    let key = userData.id;
+
+    update(ref(this.database, '/users/' + key), userData);
+  }
 }

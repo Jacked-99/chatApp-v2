@@ -19,6 +19,8 @@ import { provideDatabase, getDatabase } from '@angular/fire/database';
 
 import { EmojiComponent } from './emoji/emoji.component';
 import { PickerComponent } from '@ctrl/ngx-emoji-mart';
+import { UsersComponent } from './users/users.component';
+import { UserStatusComponent } from './user-status/user-status.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { PickerComponent } from '@ctrl/ngx-emoji-mart';
     ErrorComponent,
     HomeComponent,
     EmojiComponent,
+    UsersComponent,
+    UserStatusComponent,
   ],
   imports: [
     BrowserModule,
