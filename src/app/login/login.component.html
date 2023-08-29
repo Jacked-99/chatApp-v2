@@ -20,6 +20,22 @@
       >
         Required
       </p>
+      <label for="password">Password</label>
+      <input
+        formControlName="password"
+        class="shadow appearance-none border rounded w-full p-1"
+        type="text"
+        name=""
+        placeholder="Username"
+      />
+      <p
+        class="text-red-500"
+        *ngIf="
+          !loginForm.get('password').valid && loginForm.get('password').touched
+        "
+      >
+        Required
+      </p>
     </div>
     <button
       class="bg-blue-400 hover:bg-blue-700 text-white py-2 px-4 rounded text-md font-bold"
@@ -31,5 +47,8 @@
     <button class="mx-4" (click)="onGoogleClick()" type="button">
       Sign Up with Google
     </button>
+    <div>
+      <a routerLink="/signin">Dont have an account?</a>
+    </div>
   </form>
 </div>

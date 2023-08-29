@@ -1,9 +1,19 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Input,
+  OnInit,
+  ViewChild,
+  inject,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MessagesService } from '../messages.service';
 import { Message } from '../shared/message';
 import { UserService } from '../user.service';
-import { take } from 'rxjs';
+import { pipe, take } from 'rxjs';
+import { HttpService } from '../http.service';
+import { Database, object, ref } from '@angular/fire/database';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-chat-control',
@@ -16,6 +26,9 @@ export class ChatControlComponent implements OnInit {
   msgForm: FormGroup;
   filePreview = false;
   fileUrl: string;
+  dataBase = inject(Database);
+  objectSub: Subscription;
+  userName = '';
   constructor(
     private msgs: MessagesService,
     private authorService: UserService
@@ -24,14 +37,34 @@ export class ChatControlComponent implements OnInit {
     this.msgForm = new FormGroup({
       msg: new FormControl('', Validators.required),
     });
+    if (
+      this.authorService.auth.currentUser &&
+      !this.authorService.auth.currentUser.displayName
+    ) {
+      this.objectSub = object(
+        ref(this.dataBase, '/users/' + this.authorService.auth.currentUser.uid)
+      )
+        .pipe(take(1))
+        .subscribe({
+          next: (data) => {
+            this.userName = data.snapshot.val()['userName'];
+            console.log(this.userName);
+          },
+        });
+    } else {
+      this.userName = this.authorService.auth.currentUser.displayName;
+    }
   }
   onSubmit() {
+    console.log(this.userName);
     const user = this.authorService.auth.currentUser;
+
     if (!this.msgForm.value['msg']) {
       return;
     }
+
     const data: Message = {
-      author: { name: user['displayName'], photo: user['photoURL'] },
+      author: { name: this.userName, photo: user['photoURL'] },
       message: this.msgForm.value['msg'],
       date: new Date(Date.now()),
     };

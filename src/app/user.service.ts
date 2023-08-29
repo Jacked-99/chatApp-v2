@@ -1,14 +1,15 @@
-import { Injectable, inject, OnDestroy } from '@angular/core';
-import { BehaviorSubject, Subject, Subscription, tap, pipe } from 'rxjs';
-import { Auth, user, User } from '@angular/fire/auth';
+import { Injectable, inject } from '@angular/core';
+import {
+  Auth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  user,
+} from '@angular/fire/auth';
 import { GoogleAuthProvider, signInWithPopup } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { UserInterface } from './shared/user';
-
-import { HttpClient } from '@angular/common/http';
-import { Database, get, objectVal, update } from '@angular/fire/database';
-import { ref } from 'firebase/database';
+import { Database } from '@angular/fire/database';
 import { HttpService } from './http.service';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -17,14 +18,46 @@ export class UserService {
   aUser = user(this.auth);
   dataBase = inject(Database);
 
-  constructor(
-    private router: Router,
-    private client: HttpClient,
-    private http: HttpService
-  ) {}
+  constructor(private router: Router, private http: HttpService) {}
 
   getUser() {
     return this.aUser;
+  }
+  async CreateUser(data) {
+    const userCredential = await createUserWithEmailAndPassword(
+      this.auth,
+      data.email,
+      data.password
+    );
+    userCredential.user.displayName;
+    if (userCredential.user) {
+      const userData = {
+        id: this.auth.currentUser.uid,
+        userName: data.userName,
+        online: true,
+        profileImg:
+          'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png',
+      };
+      this.http.setUser(userData);
+      this.router.navigate(['/']);
+    }
+  }
+  async emailSignin(data) {
+    const userCredential = await signInWithEmailAndPassword(
+      this.auth,
+      data.email,
+      data.password
+    );
+    if (userCredential.user) {
+      const data = {
+        id: this.auth.currentUser.uid,
+        userName: this.auth.currentUser.displayName,
+        online: true,
+        profileImg: this.auth.currentUser.photoURL,
+      };
+      this.http.setUser(data);
+      this.router.navigate(['/']);
+    }
   }
 
   async GoogleSignIn() {

@@ -21,6 +21,7 @@ import { EmojiComponent } from './emoji/emoji.component';
 import { PickerComponent } from '@ctrl/ngx-emoji-mart';
 import { UsersComponent } from './users/users.component';
 import { UserStatusComponent } from './user-status/user-status.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { UserStatusComponent } from './user-status/user-status.component';
     EmojiComponent,
     UsersComponent,
     UserStatusComponent,
+    SignUpComponent,
   ],
   imports: [
     BrowserModule,

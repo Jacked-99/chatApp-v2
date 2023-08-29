@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.loginForm = new FormGroup({
       login: new FormControl('', Validators.required),
-      passsowrd: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required),
       userName: new FormControl('', Validators.required),
       avatar: new FormControl(''),
     });
@@ -31,11 +31,14 @@ export class LoginComponent implements OnInit {
 
     this.router.navigate(['']);
   }
-  checkValid(login: any) {
-    if (login.invalid && login.touched) {
-      return 'border-red-500';
-    }
-    return '';
+  checkValid() {
+    const values = [...this.loginForm.value];
+    values.forEach((value) => {
+      if (value.invalid && value.touched) {
+        return 'border-red-500';
+      }
+      return '';
+    });
   }
   onGoogleClick() {
     this.loginService.GoogleSignIn();

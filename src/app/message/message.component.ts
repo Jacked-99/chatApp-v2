@@ -13,6 +13,7 @@ export class MessageComponent implements OnInit {
   @Input() message: Message;
 
   currentUser: User;
+  currentUserName = '';
   constructor(private user: UserService) {}
   ngOnInit(): void {
     this.currentUser = this.user.auth.currentUser;

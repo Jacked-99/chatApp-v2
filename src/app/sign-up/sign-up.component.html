@@ -1,0 +1,77 @@
+<div class="container mx-auto max-w-xs shadow rounded p-4 bg-white">
+  <form
+    action=""
+    class="container"
+    [formGroup]="signInForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="mb-4">
+      <div class="my-6 md:my-4 container">
+        <label for="email">Email Address</label>
+        <input
+          formControlName="email"
+          class="shadow appearance-none border rounded w-full p-1"
+          type="email"
+          name=""
+          placeholder="Username"
+        />
+        <p
+          class="text-red-500"
+          *ngIf="
+            !signInForm.get('email').valid && signInForm.get('email').touched
+          "
+        >
+          Required
+        </p>
+      </div>
+      <div class="my-6 md:my-4 container">
+        <label for="password">Password</label>
+        <input
+          formControlName="password"
+          class="shadow appearance-none border rounded w-full p-1"
+          type="password"
+          name=""
+          placeholder="Username"
+        />
+        <p
+          class="text-red-500"
+          *ngIf="
+            !signInForm.get('password').valid &&
+            signInForm.get('password').touched
+          "
+        >
+          Required
+        </p>
+      </div>
+      <div class="my-6 md:my-4 container">
+        <label for="userName">Username</label>
+        <input
+          formControlName="userName"
+          class="shadow appearance-none border rounded w-full p-1"
+          type="text"
+          name=""
+          placeholder="Username"
+        />
+        <p
+          class="text-red-500"
+          *ngIf="
+            !signInForm.get('userName').valid &&
+            signInForm.get('userName').touched
+          "
+        >
+          Required
+        </p>
+      </div>
+    </div>
+    <button
+      class="bg-blue-400 hover:bg-blue-700 text-white py-2 px-4 rounded text-md font-bold"
+      type="submit"
+      [disabled]="signInForm.invalid"
+    >
+      Create User
+    </button>
+    <div>
+      <a routerLink="/login">Already have an account?</a>
+    </div>
+  </form>
+</div>

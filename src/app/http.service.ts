@@ -4,7 +4,6 @@ import { Message } from './shared/message';
 import {
   Database,
   ref,
-  onValue,
   get,
   push,
   child,
@@ -37,6 +36,15 @@ export class HttpService {
     return await get(ref(this.database, '/users/')).then((data) => {
       console.log(data.val());
       this.currentUsers = data.val();
+    });
+  }
+  async getUserData(userData) {
+    await get(ref(this.database, '/users/' + userData.id)).then((snapshot) => {
+      if (snapshot.exists) {
+        return snapshot.val();
+      } else {
+        return console.log('nope');
+      }
     });
   }
   setUser(userData) {
