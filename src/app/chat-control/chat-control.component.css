@@ -1,12 +1,13 @@
-.fileBtn {
-  height: 4rem;
-}
 .chat-form {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+  height: 5vh;
+  grid-template-columns: repeat(4, 1fr);
 }
-@media screen and (max-width: 400px) {
+@media screen and (min-width: 800px) {
   .chat-form {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+  }
+  .fileBtn {
+    height: 4rem;
   }
 }
