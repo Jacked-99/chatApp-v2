@@ -1,4 +1,4 @@
-<div class="flex max-w-fit justify-between items-center">
+<div class="flex max-w-fit justify-between items-start content-end">
   <div class="relative">
     <emoji-mart
       *ngIf="setPicker"
@@ -9,7 +9,7 @@
     ></emoji-mart>
   </div>
   <button
-    class="mx-2 px-4 py-2 rounded bg-cyan-500 hover:bg-cyan-400 hover:shadow-md hover:shadow-cyan-400/80"
+    class="mx-1 px-3 lg:px-6 py-2.5 lg:py-4 rounded bg-cyan-500 hover:bg-cyan-400 hover:shadow-md hover:shadow-cyan-400/80 active:bg-cyan-400 active:shadow-md active:shadow-cyan-400/80"
     type="button"
     (click)="emojiShow()"
   >
