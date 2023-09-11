@@ -13,6 +13,7 @@ import { MessagesService } from '../messages.service';
 import { Database, object, ref } from '@angular/fire/database';
 import { Router } from '@angular/router';
 import { HttpService } from '../http.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-message-list',
@@ -24,8 +25,10 @@ export class MessageListComponent implements OnInit, OnDestroy {
   @ViewChild('endPointButton', { static: true }) EndButton: ElementRef;
   private database = inject(Database);
   objectSub: Subscription;
+  userSub: Subscription;
 
   msgList: Message[];
+  userData: {};
   scrollDown() {
     const btnRef = this.EndButton.nativeElement;
     btnRef.click();
@@ -34,9 +37,17 @@ export class MessageListComponent implements OnInit, OnDestroy {
   constructor(
     private messages: MessagesService,
     private router: Router,
-    private http: HttpService
+    private http: HttpService,
+    private user: UserService
   ) {}
   ngOnInit(): void {
+    this.userSub = object(
+      ref(this.database, '/users/' + this.user.auth.currentUser.uid)
+    ).subscribe({
+      next: (data) => {
+        this.userData = data.snapshot.val();
+      },
+    });
     this.objectSub = object(ref(this.database, '/messages/')).subscribe({
       next: (data) => {
         const messages = [];
@@ -51,6 +62,7 @@ export class MessageListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.objectSub.unsubscribe();
+    this.userSub.unsubscribe();
   }
   onLastClick() {
     const element = this.EndPoint.nativeElement;

@@ -51,7 +51,7 @@ export class UserService {
     if (userCredential.user) {
       const data = {
         id: this.auth.currentUser.uid,
-        userName: this.auth.currentUser.displayName,
+        userName: this.auth.currentUser.email,
         online: true,
         profileImg: this.auth.currentUser.photoURL,
       };

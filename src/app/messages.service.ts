@@ -12,6 +12,7 @@ export class MessagesService {
     return await this.http.fetchMsg();
   }
   addMsg(data: Message) {
+    console.log(data);
     this.http.sendMsg(data);
   }
 }

@@ -5,6 +5,7 @@
   <app-message
     *ngFor="let message of msgList; let last = last"
     [message]="message"
+    [userData]="userData"
   ></app-message>
   <div #endPoint id="endPoint"></div>
 </div>

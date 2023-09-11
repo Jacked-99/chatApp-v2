@@ -29,6 +29,7 @@ export class ChatControlComponent implements OnInit {
   dataBase = inject(Database);
   objectSub: Subscription;
   userName = '';
+  photoUrl = '';
   constructor(
     private msgs: MessagesService,
     private authorService: UserService
@@ -48,6 +49,7 @@ export class ChatControlComponent implements OnInit {
         .subscribe({
           next: (data) => {
             this.userName = data.snapshot.val()['userName'];
+            this.photoUrl = data.snapshot.val()['profileImg'];
             console.log(this.userName);
           },
         });
@@ -64,7 +66,10 @@ export class ChatControlComponent implements OnInit {
     }
 
     const data: Message = {
-      author: { name: this.userName, photo: user['photoURL'] },
+      author: {
+        name: this.userName,
+        photo: !user['photoURL'] ? this.photoUrl : user['photoURL'],
+      },
       message: this.msgForm.value['msg'],
       date: new Date(Date.now()),
     };

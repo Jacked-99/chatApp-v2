@@ -49,7 +49,9 @@ export class HttpService {
   }
   setUser(userData) {
     let key = userData.id;
+    let data = { ...userData };
+    console.log(data);
 
-    update(ref(this.database, '/users/' + key), userData);
+    update(ref(this.database, '/users/' + key), data);
   }
 }
