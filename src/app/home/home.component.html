@@ -1,7 +1,9 @@
 <div
-  class="container text-white flex flex-col justify-center items-center w-screen h-screen"
+  class="container text-white flex flex-col lg:justify-center lg:items-center w-screen h-screen"
 >
-  <div class="container bg-slate-600 rounded-lg max-w-screen-lg home-container">
+  <div
+    class="container bg-slate-600 rounded-lg max-w-screen-lg home-container w-fit"
+  >
     <div
       class="bg-slate-900 rounded-xl home-head mb-2 flex flex-row justify-end items-center"
     >
@@ -30,7 +32,7 @@
     <div class="container home-users">
       <app-users></app-users>
     </div>
-    <div class="container mx-auto max-w-screen-lg max-h-full home-chat">
+    <div class="container lg:mx-auto lg:max-w-screen-lg max-h-full home-chat">
       <app-message-list></app-message-list>
     </div>
     <div

@@ -58,7 +58,6 @@ export class ChatControlComponent implements OnInit {
     }
   }
   onSubmit() {
-    console.log(this.userName);
     const user = this.authorService.auth.currentUser;
 
     if (!this.msgForm.value['msg']) {

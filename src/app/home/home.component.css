@@ -20,3 +20,18 @@
 .home-users {
   grid-column: 1/2;
 }
+
+@media screen and (max-width: 400px) {
+  .home-container {
+    grid-template-columns: 1fr;
+  }
+  .home-head {
+    grid-column: 1;
+  }
+  .home-chat {
+    grid-column: 1;
+  }
+  .home-users {
+    display: none;
+  }
+}
