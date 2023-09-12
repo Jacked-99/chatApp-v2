@@ -21,12 +21,15 @@ export class HomeComponent implements OnInit, OnDestroy {
   user = user(this.auth);
   userSubs: Subscription;
   loggedIn = false;
+  displayUsers = false;
+  windowWidth = 0;
   constructor(private userS: UserService, private route: Router) {}
   ngOnInit(): void {
     // this.user.user != '' ? (this.loggedIn = true) : (this.loggedIn = false);
     // if (!this.loggedIn) {
     //   this.route.navigate(['login']);
     // }
+    this.windowWidth = window.screen.width;
     this.userSubs = this.user.subscribe((aUser: User | null) => {
       // this.userS.setUser(aUser != null ? aUser.displayName : null);
     });
@@ -34,6 +37,16 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   onLogout() {
     this.userS.logOut();
+  }
+  onShowUser() {
+    this.displayUsers = !this.displayUsers;
+  }
+  changeVisibilty() {
+    if (this.windowWidth < 400) {
+      return this.displayUsers ? 'show' : 'notshow';
+    } else {
+      return '';
+    }
   }
   ngOnDestroy(): void {}
 }
