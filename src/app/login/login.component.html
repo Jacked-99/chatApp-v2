@@ -6,13 +6,13 @@
     (ngSubmit)="onSubmit()"
   >
     <div class="mb-4">
-      <label for="login">Username</label>
+      <label for="login">Email</label>
       <input
         formControlName="login"
         class="shadow appearance-none border rounded w-full p-1"
-        type="text"
+        type="email"
         name=""
-        placeholder="Username"
+        placeholder="Email"
       />
       <p
         class="text-red-500"
@@ -24,9 +24,9 @@
       <input
         formControlName="password"
         class="shadow appearance-none border rounded w-full p-1"
-        type="text"
+        type="password"
         name=""
-        placeholder="Username"
+        placeholder="Password"
       />
       <p
         class="text-red-500"
@@ -44,7 +44,11 @@
     >
       Login
     </button>
-    <button class="mx-4" (click)="onGoogleClick()" type="button">
+    <button
+      class="mx-4 hover:shadow-gray-400 hover:shadow-md hover:py-1 hover:px-2 hover:border hover:border-black hover:rounded-md"
+      (click)="onGoogleClick()"
+      type="button"
+    >
       Sign Up with Google
     </button>
     <div>

@@ -42,7 +42,7 @@ export class UserService {
       this.router.navigate(['/']);
     }
   }
-  async emailSignin(data) {
+  async emailSignin(data: { email: string; password: string }) {
     const userCredential = await signInWithEmailAndPassword(
       this.auth,
       data.email,
@@ -51,9 +51,8 @@ export class UserService {
     if (userCredential.user) {
       const data = {
         id: this.auth.currentUser.uid,
-        userName: this.auth.currentUser.email,
+
         online: true,
-        profileImg: this.auth.currentUser.photoURL,
       };
       this.http.setUser(data);
       this.router.navigate(['/']);
@@ -77,9 +76,7 @@ export class UserService {
   async logOut() {
     const data = {
       id: this.auth.currentUser.uid,
-      userName: this.auth.currentUser.displayName,
       online: false,
-      profileImg: this.auth.currentUser.photoURL,
     };
     this.http.setUser(data);
     await this.auth.signOut().then(() => this.router.navigate(['/login']));

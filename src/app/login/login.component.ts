@@ -20,16 +20,14 @@ export class LoginComponent implements OnInit {
     this.loginForm = new FormGroup({
       login: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
-      userName: new FormControl('', Validators.required),
-      avatar: new FormControl(''),
     });
-    this.userSub = this.user.subscribe((userVal) => {});
   }
   constructor(private loginService: UserService, private router: Router) {}
   onSubmit() {
-    console.log(this.loginForm.value);
-
-    this.router.navigate(['']);
+    this.loginService.emailSignin({
+      email: this.loginForm.get('login').value,
+      password: this.loginForm.get('password').value,
+    });
   }
   checkValid() {
     const values = [...this.loginForm.value];
