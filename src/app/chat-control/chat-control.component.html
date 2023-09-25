@@ -1,6 +1,9 @@
-<div class="flex flex-row justify-center items-center w-full h-full">
-  <div class="filePreview flex flex-col-reverse" *ngIf="filePreview">
-    <img [src]="fileUrl" alt="" srcset="" />
+<div class="flex flex-row justify-center items-center w-full h-full relative">
+  <div
+    class="filePreview flex flex-col-reverse bg-slate-900"
+    *ngIf="filePreview"
+  >
+    <img class="filePrevievImg" [src]="fileUrl" alt="" srcset="" />
     <button type="button" (click)="closePreview()">Close</button>
   </div>
   <form

@@ -3,11 +3,26 @@
   height: 5vh;
   grid-template-columns: repeat(4, 1fr);
 }
+.filePreview {
+  position: absolute;
+  max-width: 100%;
+  left: 0;
+  bottom: 4rem;
+}
 @media screen and (min-width: 800px) {
   .chat-form {
     grid-template-columns: 2fr 1fr 1fr 1fr;
   }
   .fileBtn {
     height: 4rem;
+  }
+  .filePreview {
+    bottom: 4rem;
+    left: 0;
+    padding: 0.5rem;
+    background-color: black;
+  }
+  .filePrevievImg {
+    max-height: 10rem;
   }
 }

@@ -13,9 +13,17 @@
       <p
         class="bg-blue-300 rounded px-4 py-2 cursor-default"
         (click)="onShowAuthor()"
+        *ngIf="message.type == 'txt' || !message.type"
       >
         {{ message.message }}
       </p>
+      <img
+        class="bg-blue-300 rounded px-4 py-2 cursor-default"
+        (click)="onShowAuthor()"
+        [src]="message.message"
+        alt=""
+        *ngIf="message.type == 'img'"
+      />
     </div>
 
     <p *ngIf="showAuthor" class="text-sm">{{ message.author.name }}</p>

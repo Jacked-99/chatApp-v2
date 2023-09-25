@@ -59,21 +59,31 @@ export class ChatControlComponent implements OnInit {
   }
   onSubmit() {
     const user = this.authorService.auth.currentUser;
+    const sendMessage = (content: string, type: string = 'text') => {
+      const data: Message = {
+        author: {
+          name: this.userName,
+          photo: !user['photoURL'] ? this.photoUrl : user['photoURL'],
+        },
+        message: content,
+        type: type,
+        date: new Date(Date.now()),
+      };
+      this.msgs.addMsg(data);
+    };
 
-    if (!this.msgForm.value['msg']) {
+    if (!this.msgForm.value['msg'] && !this.fileUrl) {
       return;
     }
-
-    const data: Message = {
-      author: {
-        name: this.userName,
-        photo: !user['photoURL'] ? this.photoUrl : user['photoURL'],
-      },
-      message: this.msgForm.value['msg'],
-      date: new Date(Date.now()),
-    };
+    if (!this.msgForm.value['msg']) {
+      sendMessage(this.fileUrl, 'img');
+    } else {
+      sendMessage(this.msgForm.value['msg']);
+      sendMessage(this.fileUrl, 'img');
+    }
+    this.filePreview = false;
+    this.fileUrl = '';
     this.msgForm.reset();
-    this.msgs.addMsg(data);
   }
   addEmoji(event) {
     console.log(event);
@@ -91,5 +101,6 @@ export class ChatControlComponent implements OnInit {
   closePreview() {
     this.filePreview = false;
     this.InputFile.nativeElement.value = '';
+    this.fileUrl = '';
   }
 }
