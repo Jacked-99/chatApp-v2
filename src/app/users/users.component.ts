@@ -19,7 +19,6 @@ export class UsersComponent implements OnInit, OnDestroy {
           this.usersStatus.push(data.snapshot.val()[key]);
         }
         this.usersStatus.filter((x) => x.online);
-        console.log(this.usersStatus);
       },
     });
   }
