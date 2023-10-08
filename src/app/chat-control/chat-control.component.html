@@ -1,0 +1,51 @@
+<div class="flex flex-row justify-center items-center w-full h-full relative">
+  <div
+    class="filePreview flex flex-col-reverse bg-slate-900"
+    *ngIf="filePreview"
+  >
+    <img class="filePrevievImg" [src]="fileUrl" alt="" srcset="" />
+    <button type="button" (click)="closePreview()">Close</button>
+  </div>
+  <form
+    action=""
+    [formGroup]="msgForm"
+    (ngSubmit)="onSubmit()"
+    class="chat-form"
+  >
+    <input
+      formControlName="msg"
+      type="text"
+      name=""
+      id=""
+      class="text-black shadow rounded p-2 h-full"
+    /><button
+      class="mx-1 lg:px-4 p-1 lg:py-2 rounded bg-cyan-500 hover:bg-cyan-400 hover:shadow-md hover:shadow-cyan-400/80 lg:p-4 lg:h-full active:bg-cyan-400 active:shadow-md active:shadow-cyan-400/80"
+      type="submit"
+    >
+      ✉️
+    </button>
+
+    <input
+      type="file"
+      name=""
+      id="file"
+      #file
+      class="hidden"
+      (change)="onChange($event)"
+    />
+
+    <button
+      class="mx-1 lg:px-4 p-1 lg:py-2 rounded bg-cyan-500 hover:bg-cyan-400 hover:shadow-md hover:shadow-cyan-400/80 fileBtn lg:h-full active:bg-cyan-400 active:shadow-md active:shadow-cyan-400/80"
+      type="button"
+      (click)="onFileClick()"
+    >
+      <img
+        src="../../assets/addFile.svg"
+        class="aspect-square lg:h-6 lg:mx-auto h-fit w-fit"
+        alt=""
+        srcset=""
+      />
+    </button>
+    <app-emoji (newEmoji)="addEmoji($event)"></app-emoji>
+  </form>
+</div>

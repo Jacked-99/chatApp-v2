@@ -1,27 +1,37 @@
-# ChatApp
+# Chatter
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.3.
 
-## Development server
+# Table of Contents
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- [Introduction](#introduction)
+- [Build With](#build-with)
+- [Features](#features)
+- [Acknowledgments](#acknowledgements)
 
-## Code scaffolding
+## Introduction
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Hi!
 
-## Build
+This is my second attempt at building chat app. Also I wanted to practice working with Angular. This version is more advanced than the previous one and I had a lot of fun building it.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Build With
 
-## Running unit tests
+- Angular 16.1.0 (https://angular.io/)
+- Rxjs 7.8.0 (https://rxjs.dev/)
+- Angular Fire 7.6.1 (https://github.com/angular/angularfire)
+- Tailwind CSS 3.3.3 (https://tailwindcss.com/)
+- Firebase 9.23.0 (https://firebase.google.com/)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Features
 
-## Running end-to-end tests
+- Creating account and login in with email and passowrd and google account
+- Ability to see status of other users
+- Sending emojis
+- Sorting messages by author and abilty to see who send what
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Acknowledgements
 
-## Further help
+Emoji picker used in this app
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+https://www.npmjs.com/package/@ctrl/ngx-emoji-mart

@@ -1,0 +1,9 @@
+.current {
+  align-items: flex-end;
+}
+.notCurrent {
+  align-items: flex-start;
+}
+.notCurrent > div > div.flex-row-reverse {
+  align-items: flex-start;
+}

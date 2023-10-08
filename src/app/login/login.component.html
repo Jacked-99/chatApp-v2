@@ -1,0 +1,58 @@
+<div class="container mx-auto max-w-xs shadow rounded p-4 bg-white">
+  <form
+    action=""
+    class="container"
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="mb-4">
+      <label for="login">Email</label>
+      <input
+        formControlName="login"
+        class="shadow appearance-none border rounded w-full p-1"
+        type="email"
+        name=""
+        placeholder="Email"
+      />
+      <p
+        class="text-red-500"
+        *ngIf="!loginForm.get('login').valid && loginForm.get('login').touched"
+      >
+        Required
+      </p>
+      <label for="password">Password</label>
+      <input
+        formControlName="password"
+        class="shadow appearance-none border rounded w-full p-1"
+        type="password"
+        name=""
+        placeholder="Password"
+      />
+      <p
+        class="text-red-500"
+        *ngIf="
+          !loginForm.get('password').valid && loginForm.get('password').touched
+        "
+      >
+        Required
+      </p>
+    </div>
+    <button
+      class="bg-blue-400 hover:bg-blue-700 text-white py-2 px-4 rounded text-md font-bold"
+      type="submit"
+      [disabled]="loginForm.invalid"
+    >
+      Login
+    </button>
+    <button
+      class="mx-4 hover:shadow-gray-400 hover:shadow-md hover:py-1 hover:px-2 hover:border hover:border-black hover:rounded-md"
+      (click)="onGoogleClick()"
+      type="button"
+    >
+      Sign Up with Google
+    </button>
+    <div>
+      <a routerLink="/signin">Dont have an account?</a>
+    </div>
+  </form>
+</div>

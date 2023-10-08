@@ -1,0 +1,8 @@
+.displayer {
+  max-height: 75vh;
+}
+@media screen and (min-width: 800px) {
+  .displayer {
+    max-height: 60vh;
+  }
+}

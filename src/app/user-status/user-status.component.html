@@ -1,0 +1,16 @@
+<div
+  class="container bg-slate-500 flex items-center my-1 lg:my-2 rounded-md mx-auto"
+>
+  <img
+    class="aspect-square w-1/5 p-2 lg:p-4 lg:w-1/3"
+    [src]="UserData.profileImg"
+    alt=""
+  />
+  <div class="mx-4">
+    <h3>{{ UserData.userName }}</h3>
+    <p>
+      {{ UserData.online ? "Online" : "Offline" }}
+      <span [ngClass]="UserData.online ? 'online' : 'offline'"></span>
+    </p>
+  </div>
+</div>

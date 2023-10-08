@@ -1,0 +1,58 @@
+<div
+  class="container text-white flex flex-col lg:justify-center lg:items-center w-screen h-screen"
+>
+  <div class="container bg-slate-600 rounded-lg max-w-screen-lg home-container">
+    <div
+      class="bg-slate-900 rounded-xl home-head mb-2 flex flex-row justify-end items-center"
+    >
+      <button
+        class="z-10 ml-2 mr-auto rounded bg-cyan-500 hover:bg-cyan-400 hover:shadow-md hover:shadow-cyan-400/80 p-1 lg:p-4 m-2 active:bg-cyan-400 active:shadow-md active:shadow-cyan-400/80 md:hidden"
+        (click)="onShowUser()"
+      >
+        <img
+          class="aspect-square logout"
+          src="{{
+            displayUsers ? '../../assets/close.svg' : '../../assets/menu.svg'
+          }}"
+          alt="usersButton"
+          srcset=""
+        />
+      </button>
+      <button
+        class="rounded bg-cyan-500 hover:bg-cyan-400 hover:shadow-md hover:shadow-cyan-400/80 p-1 lg:p-4 m-2 active:bg-cyan-400 active:shadow-md active:shadow-cyan-400/80"
+      >
+        <img
+          class="aspect-square logout"
+          src="../../assets/profile.svg"
+          alt="profileButton"
+          srcset=""
+        />
+      </button>
+      <button
+        class="rounded bg-cyan-500 hover:bg-cyan-400 hover:shadow-md hover:shadow-cyan-400/80 p-1 lg:p-4 m-2 active:bg-cyan-400 active:shadow-md active:shadow-cyan-400/80"
+        (click)="onLogout()"
+      >
+        <img
+          class="aspect-square logout"
+          src="../../assets/logout.svg"
+          alt="logoutButton"
+          srcset=""
+        />
+      </button>
+    </div>
+    <div class="overlay {{ displayUsers ? 'show' : 'notshow' }}"></div>
+    <div class="container home-users {{ displayUsers ? 'show' : 'notshow' }}">
+      <app-users></app-users>
+    </div>
+    <div
+      class="container lg:mx-auto lg:max-w-screen-lg max-h-full home-chat home-messages"
+    >
+      <app-message-list></app-message-list>
+    </div>
+    <div
+      class="container mx-auto bg-slate-900 max-w-screen-lg p-2 flex justify-center home-chat home-chat mt-2"
+    >
+      <app-chat-control></app-chat-control>
+    </div>
+  </div>
+</div>

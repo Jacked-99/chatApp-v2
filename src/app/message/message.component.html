@@ -1,0 +1,31 @@
+<div class="container flex flex-col" [ngClass]="onCheckAuthor()">
+  <div class="mx-2 lg:mx-4 my-1 max-w-fit">
+    <div
+      class="flex {{
+        onCheckAuthor() == 'current' ? 'flex-row-reverse' : 'flex-row'
+      }}"
+    >
+      <img
+        class="w-8 aspect-square mx-1 rounded-sm"
+        src="{{ message.author.photo }}"
+        alt=""
+      />
+      <p
+        class="bg-blue-300 rounded px-4 py-2 cursor-default"
+        (click)="onShowAuthor()"
+        *ngIf="message.type == 'txt' || !message.type"
+      >
+        {{ message.message }}
+      </p>
+      <img
+        class="bg-blue-300 rounded px-4 py-2 cursor-default"
+        (click)="onShowAuthor()"
+        [src]="message.message"
+        alt=""
+        *ngIf="message.type == 'img'"
+      />
+    </div>
+
+    <p *ngIf="showAuthor" class="text-sm">{{ message.author.name }}</p>
+  </div>
+</div>
