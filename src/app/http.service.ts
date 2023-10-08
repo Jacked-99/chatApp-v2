@@ -34,7 +34,6 @@ export class HttpService {
   }
   async getUsers() {
     return await get(ref(this.database, '/users/')).then((data) => {
-      console.log(data.val());
       this.currentUsers = data.val();
     });
   }
