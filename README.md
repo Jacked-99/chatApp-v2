@@ -14,6 +14,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 Hi!
 
 This is my second attempt at building chat app. Also I wanted to practice working with Angular. This version is more advanced than the previous one and I had a lot of fun building it.
+- [Live site](https://chat-app-v2-six.vercel.app/login)
 
 ## Build With
 
